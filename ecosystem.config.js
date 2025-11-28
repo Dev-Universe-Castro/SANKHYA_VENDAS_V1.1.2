@@ -15,7 +15,12 @@ const requiredVars = [
   'SANKHYA_TOKEN',
   'SANKHYA_APPKEY', 
   'SANKHYA_USERNAME',
-  'SANKHYA_PASSWORD'
+  'SANKHYA_PASSWORD',
+  'ORACLE_USER',
+  'ORACLE_PASSWORD',
+  'ORACLE_CONNECT_STRING',
+  'GEMINI_API_KEY',
+  'NEXT_PUBLIC_SITE_URL'
 ];
 
 const missingVars = requiredVars.filter(v => !process.env[v]);
@@ -40,6 +45,9 @@ module.exports = {
       SANKHYA_USERNAME: process.env.SANKHYA_USERNAME,
       SANKHYA_PASSWORD: process.env.SANKHYA_PASSWORD,
       GEMINI_API_KEY: process.env.GEMINI_API_KEY,
+      ORACLE_USER: process.env.ORACLE_USER,
+      ORACLE_PASSWORD: process.env.ORACLE_PASSWORD,
+      ORACLE_CONNECT_STRING: process.env.ORACLE_CONNECT_STRING,
       NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL
     }
   }]
