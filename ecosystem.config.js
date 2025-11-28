@@ -16,7 +16,7 @@ module.exports = {
 
       // === CORREÇÃO CRÍTICA (Conexão Local) ===
       // Define explicitamente localhost para evitar sair pelo firewall e ser bloqueado
-      ORACLE_CONNECT_STRING: "localhost:9568/FREEPDB1",
+      ORACLE_CONNECT_STRING: "localhost:1521/FREEPDB1",
       
       // Credenciais do Banco
       ORACLE_USER: process.env.ORACLE_USER || "SYSTEM",
