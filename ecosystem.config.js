@@ -1,45 +1,18 @@
-// Carregar variáveis de ambiente do arquivo local (se existir)
-const fs = require('fs');
 const path = require('path');
-const envPath = path.join(__dirname, 'config.env.local');
-
-if (fs.existsSync(envPath)) {
-  require('dotenv').config({ path: envPath });
-  console.log('✅ Variáveis carregadas de config.env.local');
-} else {
-  console.log('⚠️ Arquivo config.env.local não encontrado, usando variáveis do sistema');
-}
-
-// Validar variáveis críticas
-const requiredVars = [
-  'SANKHYA_TOKEN',
-  'SANKHYA_APPKEY', 
-  'SANKHYA_USERNAME',
-  'SANKHYA_PASSWORD',
-  'ORACLE_USER',
-  'ORACLE_PASSWORD',
-  'ORACLE_CONNECT_STRING',
-  'GEMINI_API_KEY',
-  'NEXT_PUBLIC_SITE_URL'
-];
-
-const missingVars = requiredVars.filter(v => !process.env[v]);
-if (missingVars.length > 0) {
-  console.error('❌ ERRO: Variáveis de ambiente obrigatórias não encontradas:', missingVars);
-  console.error('Configure as variáveis no sistema ou crie o arquivo config.env.local');
-  process.exit(1);
-}
+require('dotenv').config({ path: path.join(__dirname, 'config.env.local') });
 
 module.exports = {
   apps : [{
     name: "SankhyaVendas",
-    script: "node_modules/next/dist/bin/next",
-    args: "start -p 5000 -H 0.0.0.0",
+    // CORREÇÃO: Aponta para o servidor otimizado
+    script: ".next/standalone/server.js",
     instances: 1,
     exec_mode: "fork",
-    watch: false,
     env: {
       NODE_ENV: "production",
+      PORT: 5000,
+      HOSTNAME: "0.0.0.0",
+      // Garante que as vars do .env sejam passadas
       SANKHYA_TOKEN: process.env.SANKHYA_TOKEN,
       SANKHYA_APPKEY: process.env.SANKHYA_APPKEY,
       SANKHYA_USERNAME: process.env.SANKHYA_USERNAME,
