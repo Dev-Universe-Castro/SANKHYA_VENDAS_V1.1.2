@@ -31,7 +31,7 @@ export default function RootLayout({
         <link rel="icon" href="/1.png" type="image/png" />
         <link rel="apple-touch-icon" href="/1.png" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#0097FB" />
+        <meta name="theme-color" content="oklch(68% .15 145)" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
